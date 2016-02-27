@@ -32,7 +32,7 @@ Config:
     'email' => '...',
     'access' => '...',
     'secret' => '...',
-    'host' => '...', (optional - default email.eu-west-1.amazonaws.com)
+    'host' => '...', // (optional - default email.eu-west-1.amazonaws.com)
 ]
 ```
 

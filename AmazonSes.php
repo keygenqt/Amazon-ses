@@ -16,6 +16,7 @@ class AmazonSes extends Widget
     public $email;
     public $host = self::AWS_EU_WEST1;
 
+    /** @var \SimpleEmailService */
     private $ses;
 
     public function init()
@@ -23,9 +24,7 @@ class AmazonSes extends Widget
         if (!$this->access || !$this->secret) {
             throw new Exception("Access and secret required!");
         }
-
         $this->ses = new \SimpleEmailService($this->access, $this->secret, $this->host);
-
         parent::init();
     }
 
@@ -36,9 +35,8 @@ class AmazonSes extends Widget
         $m->addTo($emails);
 
         $m->setSubject($subject);
-        $m->setMessageFromString($body);
+        $m->setMessageFromString('', $body);
 
         return $this->ses->sendEmail($m);
-
     }
 }
